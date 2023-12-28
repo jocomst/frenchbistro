@@ -19,7 +19,7 @@
     </parent>
 
     <properties>
-        <java.version>11</java.version> <!-- Set your Java version here -->
+        <java.version>17</java.version> <!-- Set your Java version here -->
     </properties>
 
     <dependencies>
