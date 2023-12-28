@@ -1,15 +1,13 @@
-package com.yourusername.frenchbistro;
+package com.jocomst.frenchbistro;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class FrenchBistroApplication {
 
-    public static void main(String[] args) {
-        System.out.println("Welcome to French Bistro!");
-        // Initialize your application here
+	public static void main(String[] args) {
+		SpringApplication.run(FrenchBistroApplication.class, args);
+	}
 
-        // Example: Start a server, initialize a database connection, etc.
-
-        // Keep the application running until it's stopped
-        // For web applications, this is usually handled by the server framework
-    }
 }
-
