@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${recipe.name}">Recipe Name</title>
+    <!-- Add your stylesheet links here -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+<div class="recipe-container">
+    <div class="recipe-header">
+        <img th:src="@{${recipe.imageUrl}}" alt="Recipe Image" class="recipe-image"/>
+        <h1 th:text="${recipe.name}">Steak frites with béarnaise</h1>
+        <div th:if="${recipe.rating}" class="recipe-rating">
+            <!-- Display star rating based on recipe.rating -->
+        </div>
+        <div class="recipe-meta">
+            <span th:text="'Prep Time: ' + ${recipe.prepTime}">Prep Time: 45 mins</span> |
+            <span th:text="'Cook Time: ' + ${recipe.cookTime}">Cook Time: 25 mins</span> |
+            <span th:text="'Servings: ' + ${recipe.servings}">Servings: 2</span>
+        </div>
+        <div class="recipe-actions">
+            <button>Print Recipe</button>
+            <button>Pin Recipe</button>
+        </div>
+    </div>
+
+    <div class="recipe-ingredients">
+        <h2>Ingredients</h2>
+        <div th:each="ingredient : ${recipe.ingredients}">
+            <div th:text="${ingredient.name} + ': ' + ${ingredient.quantity}">4 potatoes peeled and sliced into fries</div>
+        </div>
+    </div>
+
+    <div class="recipe-instructions">
+        <h2>Instructions</h2>
+        <ol>
+            <li th:each="step : ${recipe.instructions}" th:text="${step.description}">Preheat your oven for fries</li>
+        </ol>
+    </div>
+
+    <!-- Add additional sections like Nutrition Facts, Comments, etc. -->
+</div>
+
+</body>
+</html>
+
