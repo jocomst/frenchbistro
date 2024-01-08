@@ -2,10 +2,13 @@ package com.jocomst.frenchbistro.repository;
 
 import com.jocomst.frenchbistro.entity.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import java.util.List;
 
-@Repository
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
-    // Custom query methods (if needed)
+    List<Recipe> findByName(String name);
+
+    @Query("SELECT r FROM Recipe r JOIN r.ingredients i WHERE i LIKE %:ingredient%")
+    List<Recipe> findByIngredientContaining(String ingredient);
 }
 

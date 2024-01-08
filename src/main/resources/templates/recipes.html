@@ -2,16 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${recipe.name}">Recipe Name</title>
-    <!-- Add your stylesheet links here -->
+    <title>Recipes</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
 </head>
 <body>
 
-<div class="recipe-container">
+<div th:each="recipe : ${recipes}" class="recipe-container">
     <div class="recipe-header">
         <img th:src="@{${recipe.imageUrl}}" alt="Recipe Image" class="recipe-image"/>
-        <h1 th:text="${recipe.name}">Steak frites with béarnaise</h1>
+        <h1 th:text="${recipe.name}">Recipe Name</h1>
+        <!-- Assuming rating, prepTime, cookTime, servings are part of the Recipe entity -->
         <div th:if="${recipe.rating}" class="recipe-rating">
             <!-- Display star rating based on recipe.rating -->
         </div>
@@ -28,19 +28,19 @@
 
     <div class="recipe-ingredients">
         <h2>Ingredients</h2>
-        <div th:each="ingredient : ${recipe.ingredients}">
-            <div th:text="${ingredient.name} + ': ' + ${ingredient.quantity}">4 potatoes peeled and sliced into fries</div>
-        </div>
+        <!-- Assuming ingredients is a list of strings in the Recipe entity -->
+        <ul>
+            <li th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient}">Ingredient</li>
+        </ul>
     </div>
 
     <div class="recipe-instructions">
         <h2>Instructions</h2>
+        <!-- Assuming instructions is a list of strings in the Recipe entity -->
         <ol>
-            <li th:each="step : ${recipe.instructions}" th:text="${step.description}">Preheat your oven for fries</li>
+            <li th:each="instruction : ${recipe.instructions}" th:text="${instruction}">Instruction</li>
         </ol>
     </div>
-
-    <!-- Add additional sections like Nutrition Facts, Comments, etc. -->
 </div>
 
 </body>
