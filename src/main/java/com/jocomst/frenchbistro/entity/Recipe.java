@@ -22,6 +22,14 @@ public class Recipe {
 
     @ElementCollection(fetch = FetchType.LAZY)
     private List<String> ingredients;
+    
+     public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     // Getter for id
     public Long getId() {
