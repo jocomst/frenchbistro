@@ -30,7 +30,7 @@ public class RecipeServiceTest {
     }
 
     @Test
-    public void testFindAllRecipes() {
+    public void testFindAllRecipesReturnsData() {
         // Arrange
         List<Recipe> mockRecipes = new ArrayList<>();
         mockRecipes.add(new Recipe()); // Add mock Recipe objects as needed
@@ -42,6 +42,20 @@ public class RecipeServiceTest {
         // Assert
         assertNotNull(recipes);
         assertFalse(recipes.isEmpty());
+        verify(recipeRepository).findAll();
+    }
+
+    @Test
+    public void testFindAllRecipesReturnsEmptyListWhenNull() {
+        // Arrange
+        when(recipeRepository.findAll()).thenReturn(null);
+
+        // Act
+        List<Recipe> recipes = recipeService.findAllRecipes();
+
+        // Assert
+        assertNotNull(recipes);
+        assertTrue(recipes.isEmpty(), "The list should be empty if null is returned from repository");
         verify(recipeRepository).findAll();
     }
 

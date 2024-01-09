@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.ArrayList;
 
 @Service
 public class RecipeService {
@@ -14,9 +15,15 @@ public class RecipeService {
     private RecipeRepository recipeRepository;
 
     public List<Recipe> findAllRecipes() {
-        return recipeRepository.findAll();
+        try {
+            return recipeRepository.findAll();
+        } catch (Exception e) {
+            // Log the exception here if you wish
+            return new ArrayList<>(); // Return an empty list if there's an exception
+        }
     }
 
     // Additional business logic methods
+
 }
 
