@@ -15,15 +15,10 @@ public class RecipeService {
     private RecipeRepository recipeRepository;
 
     public List<Recipe> findAllRecipes() {
-        try {
-            return recipeRepository.findAll();
-        } catch (Exception e) {
-            // Log the exception here if you wish
-            return new ArrayList<>(); // Return an empty list if there's an exception
-        }
+        List<Recipe> recipes = recipeRepository.findAll();
+        return recipes != null ? recipes : new ArrayList<>();
     }
 
     // Additional business logic methods
-
 }
 
