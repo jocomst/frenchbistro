@@ -18,6 +18,10 @@ public class RecipeService {
         List<Recipe> recipes = recipeRepository.findAll();
         return recipes != null ? recipes : new ArrayList<>();
     }
+    
+    public Recipe findById(Long id) {
+        return recipeRepository.findById(id).orElse(null); // or handle it differently
+    }
 
     // Additional business logic methods
 }
