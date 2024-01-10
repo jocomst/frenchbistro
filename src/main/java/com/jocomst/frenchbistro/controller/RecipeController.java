@@ -1,6 +1,7 @@
 package com.jocomst.frenchbistro.controller;
 
 import com.jocomst.frenchbistro.service.RecipeService;
+import com.jocomst.frenchbistro.entity.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
