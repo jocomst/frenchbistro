@@ -32,5 +32,23 @@ public class RecipeControllerTest {
     }
 
     // Additional tests for other methods in RecipeController
+    @Test
+    public void testGetRecipeById() throws Exception {
+        // Arrange
+        Long recipeId = 1L;
+        Recipe mockRecipe = new Recipe(); // Set up your Recipe object as needed
+        mockRecipe.setId(recipeId);
+        // ... set other properties of the Recipe object ...
+
+        Mockito.when(recipeService.findById(recipeId)).thenReturn(mockRecipe);
+
+        // Act & Assert
+        mockMvc.perform(get("/recipes/{id}", recipeId))
+               .andExpect(status().isOk())
+               .andExpect(view().name("recipeDetails"))
+               .andExpect(model().attributeExists("recipe"))
+               .andExpect(model().attribute("recipe", mockRecipe));
+    }
+
 }
 

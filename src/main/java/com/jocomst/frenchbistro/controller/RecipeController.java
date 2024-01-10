@@ -19,5 +19,12 @@ public class RecipeController {
     }
 
     // Other endpoints as needed
+    
+    @GetMapping("/recipes/{id}")
+public String getRecipeById(@PathVariable Long id, Model model) {
+    Recipe recipe = recipeService.findById(id);
+    model.addAttribute("recipe", recipe);
+    return "recipeDetails"; // Assuming "recipeDetails" is the name of the Thymeleaf template
+}
 }
 
